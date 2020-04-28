@@ -7,10 +7,24 @@ Array.prototype.print = function(){
     console.table(this);
 }
 
+Array.prototype.iterator = function(){
+    console.log(`array has ${this.length} elements`);
+    console.time("for loop");
+    for(x = 0; x < this.length; x++){
+        //
+    }
+    console.timeEnd("for loop");
+    console.time("forEach");
+    this.forEach( (elem) => {
+        // 
+    });
+    console.timeEnd("forEach");
+}
+
 const random_array = (n) => {
     let array = [n];
     console.time("random");
-    for(idx = 0; idx <= n; idx++){
+    for(idx = 0; idx < n; idx++){
         array[idx] = Math.floor((Math.random() * n) + 1);
     }
     console.timeEnd("random");
@@ -18,15 +32,4 @@ const random_array = (n) => {
 };
 
 let array = random_array(10000000);
-
-// Test ausgabe
-console.time("timer");
-for(let x = 0; x  < array.length; x++){
-    // nothing
-}
-console.timeEnd("timer");
-console.time("timer");
-array.forEach((elem) => {
-    // nothing
-});
-console.timeEnd("timer");
+array.iterator();
